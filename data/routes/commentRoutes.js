@@ -2,7 +2,7 @@ const router = require("express").Router();
 const db = require("../db");
 
 //GET COMMENTS BY ID
-router.get("/api/posts/:id/comments/", (req, res) => {
+router.get("/:id/comments/", (req, res) => {
     db.findCommentById(req.params.id)
       .then((comment) => {
         if (comment.length > 0) {

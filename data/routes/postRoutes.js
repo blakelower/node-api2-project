@@ -3,7 +3,7 @@ const router = require("express").Router();
 const db = require("../db");
 
 //GET POSTS
-router.get("/", (req, res) => {
+router.get("/posts", (req, res) => {
   db.find()
     .then((data) => {
       res.status(200).json(data);
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 //GET POSTS BY ID
-router.get("/api/posts/:id/comments", (req, res) => {
+router.get("/posts/:id", (req, res) => {
   db.findById(req.params.id)
     .then((post) => {
       if (post.length > 0) {
@@ -33,7 +33,7 @@ router.get("/api/posts/:id/comments", (req, res) => {
 });
 
 //ADD NEW POST
-router.post("/", (req, res) => {
+router.post("/posts", (req, res) => {
   if (!req.body.title || !req.body.contents) {
     return res.status(400).json({
       message: "Invalid Post",
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
 });
 
 //UPDATE POST
-router.put("/:id", (req, res) => {
+router.put("/posts/:id", (req, res) => {
   if (!req.body.title || !req.body.contents) {
     return res.status(400).json({
       message: "Invalid post",
@@ -85,7 +85,7 @@ router.put("/:id", (req, res) => {
 });
 
 //DELETE POST
-router.delete("/:id", (req, res) => {
+router.delete("/posts/:id", (req, res) => {
   db.remove(req.params.id)
     .then((count) => {
       if (count > 0) {
