@@ -1,6 +1,7 @@
   
 const express = require('express');
 const postRoute = require('./data/routes/postRoutes');
+const commentRoute = require("./data/routes/commentRoutes");
 const server = express();
 
 server.use(express.json());
@@ -8,6 +9,7 @@ server.use(express.json());
 const port = 5000;
 
 server.use('/api' , postRoute);
+server.use('/api/posts', commentRoute);
 
 server.get('/' , (req, res) => {
     res.send(`

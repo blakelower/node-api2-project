@@ -85,7 +85,7 @@ Configure the API to handle to the following routes:
 
 #### Endpoint Specifications
 
-When the client makes a `POST` request to `/api/posts`:
+When the client makes a `POST` request to `ew`:
 
 - If the request body is missing the `title` or `contents` property:
 

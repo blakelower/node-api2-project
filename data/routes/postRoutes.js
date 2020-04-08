@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 //GET POSTS BY ID
-router.get("/:id", (req, res) => {
+router.get("/api/posts/:id/comments", (req, res) => {
   db.findById(req.params.id)
     .then((post) => {
       if (post.length > 0) {
